@@ -339,8 +339,10 @@ public class OAuth2ClientPlugin: CAPPlugin {
                 }
             } else {
                 do {
-                    let jsonObj = try JSONSerialization.jsonObject(with: response!.data, options: []) as! JSObject
-                    call.resolve(jsonObj)
+                    //let jsonObj = try JSONSerialization.jsonObject(with: response!.data, options: []) as! JSObject
+                    //call.resolve(jsonObj)
+                    //https://github.com/moberwasserlechner/capacitor-oauth2/issues/103 (use parameters data as response is nil)
+                    call.resolve(parameters)
                 } catch {
                     call.reject(self.ERR_GENERAL)
                 }
